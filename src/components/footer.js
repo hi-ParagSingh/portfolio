@@ -8,8 +8,12 @@ export default function Footer() {
           <h3>Copyright © 2024. All rights are reserved.</h3>
         </div>
         <div className="right">
-          <a href="">{svgImages?.linkedin}</a>
-          <a href="">{svgImages?.github}</a>
+          <a href="" className="social_icon">
+            {svgImages?.linkedin}
+          </a>
+          <a href="" className="social_icon">
+            {svgImages?.github}
+          </a>
         </div>
       </div>
     </footer>
