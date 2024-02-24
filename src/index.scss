@@ -11,6 +11,7 @@
   --font-color-light: #fff;
   --font-color-dark: #2d2e32;
   --font-color-dark-2: #555;
+  --font-bright-color: #6b4fbb;
   --transition: all 0.2s ease-in-out;
   --hover-animation: scale(1.15);
   --box-shadow: 0 0 10px rgba(0, 0, 0, 0.09);
@@ -57,14 +58,55 @@ html {
   width: 30px;
   height: 30px;
   svg {
-    &:hover {
-      transform: var(--hover-animation);
-      transition: var(--transition);
-    }
+    transition: var(--transition) !important;
+
     path {
       stroke: var(--font-color-light);
     }
+
+    &:hover {
+      transform: var(--hover-animation);
+
+      path {
+        stroke: var(--font-bright-color) !important;
+      }
+    }
   }
+}
+
+@mixin image_animation {
+  animation: image_animation 8s ease-in-out infinite;
+  background-image: url("");
+  background-position: 50%;
+  background-repeat: no-repeat;
+  background-size: cover;
+  border: 3px solid #2d2e32;
+  border-radius: 60% 40% 30% 70%/60% 30% 70% 40%;
+  position: relative;
+  transition: all 1s ease-in-out;
+  height: 25rem;
+  width: 25rem;
+}
+
+@mixin heading {
+  font-size: 28px;
+  font-family: var(--secondary-font);
+  color: var(--font-bright-color);
+  margin: 0px;
+}
+
+@mixin description {
+  font-size: 20px;
+  font-family: var(--secondary-font);
+  margin: 0px;
+  color: var(--font-color-dark-2);
+  margin-top: 10px;
+}
+
+@mixin description-2 {
+  font-size: 16px;
+  font-family: var(--primary-font);
+  color: var(--font-color-dark-2);
 }
 
 /* Header */
@@ -134,6 +176,10 @@ html {
           margin: 0px;
           padding: 0px;
 
+          &.name {
+            color: var(--font-bright-color);
+          }
+
           &.waving {
             display: grid;
             grid-template-columns: repeat(2, max-content);
@@ -182,17 +228,7 @@ html {
       }
 
       .right {
-        animation: image_animation 8s ease-in-out infinite;
-        background-image: url("");
-        background-position: 50%;
-        background-repeat: no-repeat;
-        background-size: cover;
-        border: 3px solid #2d2e32;
-        border-radius: 60% 40% 30% 70%/60% 30% 70% 40%;
-        position: relative;
-        transition: all 1s ease-in-out;
-        height: 25rem;
-        width: 25rem;
+        @include image_animation();
       }
     }
     .skill_info {
@@ -248,6 +284,84 @@ html {
               transform: var(--hover-animation);
             }
           }
+        }
+      }
+    }
+  }
+  .about {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    align-items: center;
+    justify-content: center;
+    gap: 50px;
+    padding: 75px var(--content-padding);
+
+    .left {
+      img {
+        width: 100%;
+        height: 100%;
+      }
+    }
+    .right {
+      h2 {
+        @include heading();
+      }
+      h4 {
+        @include description();
+      }
+      p {
+        @include description-2();
+      }
+    }
+  }
+  .contact {
+    padding: 50px;
+    padding: 75px var(--content-padding);
+
+    h2 {
+      @include heading();
+    }
+    h4 {
+      @include description();
+    }
+
+    .contact_container {
+      display: grid;
+      grid-auto-flow: column;
+      align-items: center;
+      justify-content: flex-start;
+      gap: 50px;
+      margin-top: 50px;
+
+      .item {
+        display: grid;
+        grid-template-columns: max-content 1fr;
+        align-items: center;
+        justify-content: center;
+        gap: 10px;
+
+        svg {
+          width: 30px;
+          height: 30px;
+          background-color: var(--background);
+          padding: 8px;
+          box-shadow: var(--box-shadow);
+          border-radius: 8px;
+          path {
+            stroke: var(--font-bright-color);
+          }
+        }
+
+        h4 {
+          margin: 0px;
+          font-size: 18px;
+        }
+        a {
+          display: block;
+          font-family: var(--primary-font);
+          font-size: 14px;
+          color: var(--font-color-dark-2);
+          text-decoration: none;
         }
       }
     }

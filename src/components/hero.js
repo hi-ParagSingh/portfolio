@@ -6,7 +6,7 @@ export default function Landing() {
       <div className="hero_top">
         <div className="left">
           <h1 className="waving">Hi, {svgImages?.hand}</h1>
-          <h1>Parag Singh</h1>
+          <h1 className="name">Parag Singh</h1>
           <h1>Frontend Developer</h1>
           <p>
             Hi, I'm Parag Singh. A passionate Front-end Developer <br /> based
